@@ -42,8 +42,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/teana.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/title-2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="supDet.php"><img src="images/teana.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="supDet.php"><img src="images/title-2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -86,7 +86,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
+                        <a href="php_scripts/logout.php" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
                     </li>
                 </ul>
             </div>
@@ -172,7 +172,7 @@
             <th>Supplier Name</th>
             <th>Address</th>
             <th>Contact Number</th>
-            <th>Action</th>
+            <th colspan="2">Action</th>
             </tr>
              </thead>
     
@@ -182,8 +182,23 @@
             <td><?php echo $row['supplier_name']; ?></td>
             <td><?php echo $row['address']; ?></td>
             <td><?php echo $row['contact']; ?></td>
+            <td style="display:none;"><?php echo $row['first_material']; ?></td>
+            <td style="display:none;"><?php echo $row['second_material']; ?></td>
+            <td style="display:none;"><?php echo $row['third_material']; ?></td>
+            <td style="display:none;"><?php echo $row['fourth_material']; ?></td>
+            <td style="display:none;"><?php echo $row['fifth_material']; ?></td>
+
             <td>
-               <a href="updateSup.php?ID=<?php echo $row['supplier_id']; ?>" class="ed_year" style="color:blue" >UPDATE</a> 
+
+            <button type="submit" class="btn btn-info btn-sm">
+                    <a href="showSup.php?ID=<?php echo $row['supplier_id']; ?>" style="color:white" >SHOW MORE</a>     
+           </button>
+        </td>
+
+            <td>
+                <button type="submit" class="btn btn-success btn-sm">
+               <a href="updateSup.php?ID=<?php echo $row['supplier_id']; ?>" class="ed_year" style="color:white" >UPDATE</a> 
+           </button>
             </td>
             </tr>
              <?php } ?>
@@ -235,9 +250,14 @@
     td1 = tr[i].getElementsByTagName("td")[1];
     td2 = tr[i].getElementsByTagName("td")[2];
     td3 = tr[i].getElementsByTagName("td")[3];
+    td4 = tr[i].getElementsByTagName("td")[4];
+    td5 = tr[i].getElementsByTagName("td")[5];
+    td6 = tr[i].getElementsByTagName("td")[6];
+    td7 = tr[i].getElementsByTagName("td")[7];
+    td8 = tr[i].getElementsByTagName("td")[8];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1 ||
-        td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        td3.innerHTML.toUpperCase().indexOf(filter) > -1 || td4.innerHTML.toUpperCase().indexOf(filter) > -1 || td5.innerHTML.toUpperCase().indexOf(filter) > -1 || td6.innerHTML.toUpperCase().indexOf(filter) > -1 || td7.innerHTML.toUpperCase().indexOf(filter) > -1 || td8.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";

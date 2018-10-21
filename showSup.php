@@ -1,4 +1,4 @@
-    <?php include('php_scripts/server.php'); ?>
+<?php include('php_scripts/server.php'); ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Update Customer</title>
+    <title>Supplier Information</title>
     <meta name="description" content="Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/title.png"/>
@@ -26,6 +26,7 @@
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
@@ -42,12 +43,12 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="updateCust.php"><img src="images/teana.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="updateCust.php"><img src="images/title-2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="updateSup.php"><img src="images/teana.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="updateSup.php"><img src="images/title-2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
-                   <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="dashboard.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
@@ -66,7 +67,7 @@
                         <a href="cusDet.php"> <i class="menu-icon fa fa-user"></i>Customer Details</a>
                     </li>
                 </ul>
-            </div>
+            </div>  
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -83,6 +84,7 @@
                     </li>
                 </ul>
             </div>
+
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
@@ -157,7 +159,7 @@
                         border-top: 0; }
                         </style>
                       <div class="card-header">
-                        <strong style="color:white;">Update Customer Information</strong>
+                        <strong style="color:white;">Supplier Information</strong>
                       </div>
                       <div class="card-body card-block">
                         <form action="" method="post" >
@@ -166,37 +168,52 @@
                                  $id = $_GET['ID'];
 
                                  $db = mysqli_connect('localhost', 'root','','teana');
-                                 $query = "SELECT * FROM customer_info WHERE customer_id='$id'";
+                                 $query = "SELECT * FROM supplier WHERE supplier_id='$id'";
 
                                 $result = mysqli_query($db, $query);
 
                                 while($row = mysqli_fetch_assoc($result)){
-                                $name = $row['customer_name'];
+                                $name = $row['supplier_name'];
                                 $address = $row['address'];
                                 $contact = $row['contact'];
-                                }
-                                ?>
+                                $first = $row['first_material'];
+                                $second = $row['second_material'];
+                                $third = $row['third_material'];
+                                $fourth = $row['fourth_material'];
+                                $fifth = $row['fifth_material'];
+                                 } 
+                                 ?>
                             <!-- customer id -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Customer ID</label>
-                                   <input type="text" id="id" name="id" value="<?php echo $id ?>" hidden>
+                            <input type="text" id="id" name="id" value="<?php echo $id ?>" hidden>
                             <input type="text" class="form-control" value="<?php echo $id ?>" disabled>
                             </div>
                             <!-- customer name -->
                           <div class="form-group"><label for="nf-picture" class=" form-control-label">Customer Name</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Customer Name" value="<?php echo $name ?>">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Customer Name" value="<?php echo $name ?>" disabled>
                             </div>
                             <!-- address -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Address</label>
-                            <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address" value="<?php echo $address ?>">
+                            <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address" value="<?php echo $address ?>" disabled>
                             </div>
                             <!-- contact number -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Contact Number</label>
-                            <input type="number" id="contact" name="contact" class="form-control" placeholder="Enter Contact Number" value="<?php echo $contact ?>">
+                            <input type="number" id="contact" name="contact" class="form-control" placeholder="Enter Contact Number" value="<?php echo $contact ?>" disabled>
+                            </div>
+                             <!-- Raw Materials -->
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Raw Materials</label>
+                            <input type="text" id="first" name="first" class="form-control" value="<?php echo $first ?>" disabled>
+                            <br>
+                            <input type="text" id="second" name="second" class="form-control" value="<?php echo $second ?>" disabled>
+                            <br>
+                            <input type="text" id="third" name="third" class="form-control"  value="<?php echo $third ?>" disabled>
+                            <br>
+                            <input type="text" id="fourth" name="fourth" class="form-control" value="<?php echo $fourth ?>" disabled> 
+                            <br>
+                            <input type="text" id="fifth" name="fifth" class="form-control"  value="<?php echo $fifth ?>" disabled>
                             </div>
                              <div class="form-actions form-group">
-                            <button type="submit" name="updateCust" class="btn btn-success btn-lg">Update</button>
-                             <button type="submit"class="btn btn-danger btn-lg" onclick="return confirm('This action cannot be redo. Are you sure you want to delete this data?')" name="delCust">Delete</button>
-                             </div>
+                            <button type="submit" class="btn btn-success btn-lg"><a href="supDet.php" style="color:white" >Back</a></button>
                         </form>
                       </div>
                     </div>

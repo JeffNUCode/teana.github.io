@@ -42,8 +42,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/teana.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/title-2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="orderHis.php"><img src="images/teana.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="orderHis.php"><img src="images/title-2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -87,7 +87,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
+                        <a href="php_scripts/logout.php" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
                     </li>
                 </ul>
             </div>
@@ -159,7 +159,7 @@
                         border-top: 0; }
                     </style>
                  <div class="card-header">
-                                <strong style="color:white">Customer Details</strong>
+                                <strong style="color:white">Order History</strong>
                             </div>
                 <input type="text" id="myInput" class="light-table-filter" onkeyup="myFunction()" style="width:300px; margin-left:30px; margin-top: 10px; height:40px; margin-bottom: 10px" placeholder="Search"></input>
             
@@ -172,17 +172,10 @@
             <tr>
             <th>Customer ID</th>
             <th>Customer Name</th>
-            <th>Address</th>
             <th>Contact Number</th>
             <th>Order Date</th>
-            <th>Estimated Delivery Date</th>
-            <th>Actual Delivery Date</th>
-            <th>Type of Shoes</th>
-            <th>Upper Color</th>
-            <th>In Sole</th>
-            <th>Quantity</th>
-            <th>Delivery Status</th>
-            <th>Action</th>
+             <th>Actual Delivery Date</th>
+            <th colspan="2">Action</th>
             </tr>
              </thead>
     
@@ -190,24 +183,26 @@
              <tr>
             <td><?php echo $row['customer_id']; ?></td>
             <td><?php echo $row['customer_name']; ?></td>
-            <td><?php echo $row['address']; ?></td>
             <td><?php echo $row['contact']; ?></td>
             <td><?php echo $row['order_date']; ?></td>
-            <td><?php echo $row['delivery_date']; ?></td>
             <td><?php echo $row['actual_delivery']; ?></td>
-            <td><?php echo $row['shoe_type']; ?></td>
-            <td><?php echo $row['upper_color']; ?></td>
-            <td><?php echo $row['in_sole']; ?></td>
-            <td><?php echo $row['quantity']; ?></td>
-            <td><?php echo $row['status']; ?></td>
             <td>
-               <a href="updateHis.php?ID=<?php echo $row['customer_id']; ?>" class="ed_year" style="color:blue" >UPDATE</a> 
+
+            <button type="submit" class="btn btn-info btn-sm">
+                    <a href="showMore.php?ID=<?php echo $row['customer_id']; ?>" style="color:white" >SHOW MORE</a>     
+           </button>
+        </td>
+        <td>
+
+             <button type="submit" class="btn btn-success btn-sm">
+                <a href="updateHis.php?ID=<?php echo $row['customer_id']; ?>" class="ed_year" style="color:white" >UPDATE</a> 
+            </button>
+
             </td>
             </tr>
              <?php } ?>
             </table>
             </table>
-
         </div>
                    
                     </div>
@@ -217,8 +212,9 @@
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
 
-    <!-- Right Panel -->
 
+
+    <!-- Right Panel -->
     <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="assets/js/plugins.js"></script>
@@ -278,7 +274,6 @@
             } );
         } )( jQuery );
     </script>
-
 
 </body>
 </html>

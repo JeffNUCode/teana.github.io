@@ -42,8 +42,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/teana.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/title-2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="specs.php"><img src="images/teana.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="specs.php"><img src="images/title-2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -87,7 +87,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
+                        <a href="php_scripts/logout.php" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
                     </li>
                 </ul>
             </div>
@@ -163,21 +163,44 @@
                       <div class="card-body card-block">
                         <form action="" method="post" >
                               <?php include('php_scripts/errors.php'); ?>
+                              <div class="row">
                             <!-- customer name -->
-                          <div class="form-group"><label for="nf-picture" class=" form-control-label">Customer Name</label>
+                             <div class="col-6">
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Customer Name</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="Enter Customer Name">
                             </div>
+                            </div>
                             <!-- address -->
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Address</label>
                             <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address">
                             </div>
+                            </div>
                             <!-- contact number -->
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Contact Number</label>
                             <input type="number" id="contact" name="contact" class="form-control" placeholder="Enter Contact Number">
                             </div>
+                            </div>
                             <!-- order date -->
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Order Date</label>
                             <input type="date" id="date" name="date" class="form-control">
+                            </div>
+                            </div>
+                            <!-- shoe size -->
+                            <div class="col-6">
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Shoe Size</label>
+                            <input type="number" id="size" name="size" class="form-control" placeholder="Enter Shoe Size">
+                            </div>
+                            </div>
+                            <!-- quantity -->
+                            <div class="col-6">
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Enter Quantity">
+                            </div>
+                            </div>
+                            <!--end of row -->
                             </div>
                             <!-- type of shoe -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Type of Shoes</label>
@@ -210,10 +233,10 @@
                                     <option value="with Design">with Design</option>
                                 </select>
                             </div>
-                            <!-- quantity -->
-                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Quantity</label>
-                            <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Enter Quantity">
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Remarks</label>
+                            <textarea rows="9" placeholder="Remarks..." class="form-control" id="remarks" name="remarks"></textarea>
                             </div>
+
                              <div class="form-actions form-group"><button type="submit" name="addOrder" class="btn btn-success btn-lg">Submit</button>
                              </div>
                         </form>

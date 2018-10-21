@@ -83,7 +83,7 @@
               <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
+                        <a href="php_scripts/logout.php" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -218,23 +218,23 @@
                 </div>
 
                    <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-2">
+                <div class="card text-white bg-flat-color-4">
                     <div class="card-body pb-0">
                         <div class="dropdown float-right">
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             </div>
                         </div>
                         <h4 class="mb-0">
-                               <?php
+                                <?php
                             $con = mysqli_connect('localhost', 'root','','teana');
-                            $result=mysqli_query($con,"SELECT COUNT(supplier_id) FROM supplier");
+                            $result=mysqli_query($con,"SELECT COUNT(*) FROM customer_order WHERE status = 'Cancelled'");
                             while($row1 = mysqli_fetch_array($result)){
-                               $mark = $row1['COUNT(supplier_id)'];
+                               $mark = $row1['COUNT(*)'];
                              }
                             ?>
                             <center><span class="count"><?php echo $mark ?></span></center>
                         </h4>
-                            <center><p class="text-light">Total Number of Suppliers</p></center>
+                            <center><p class="text-light">Cancelled Orders</p></center>
 
                         <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart2"></canvas>
@@ -308,17 +308,15 @@
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">New Customer</div>
-                                        <?php
- 
+                                        <div class="stat-text">Total Numbers of Suppliers</div>
+                                          <?php
                             $con = mysqli_connect('localhost', 'root','','teana');
-                            $result=mysqli_query($con,'SELECT COUNT(customer_id) FROM `customer_order`');
+                            $result=mysqli_query($con,"SELECT COUNT(supplier_id) FROM supplier");
                             while($row1 = mysqli_fetch_array($result)){
-                               $mark = $row1['COUNT(customer_id)'];
-                         }
-                                $mark1 = $mark - 4;
+                               $mark = $row1['COUNT(supplier_id)'];
+                             }
                             ?>
-                                        <div class="stat-digit"><?php echo $mark1 ?></div>
+                                        <div class="stat-digit"><?php echo $mark ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -412,11 +410,11 @@
                             while($row1 = mysqli_fetch_array($result)){
                                $mark = $row1['COUNT(customer_id)'];
                          }
-                                $mark1 = $mark - 5;
+                                $mark1 = $mark - 4;
                             ?>
                                         <span class="count"><?php echo $mark1 ?></span>
                                     </div>
-                                    <small class="text-muted text-uppercase font-weight-bold">New Clients</small>
+                                    <small class="text-muted text-uppercase font-weight-bold">New Customers</small>
                                     <div class="progress progress-xs mt-3 mb-0 bg-flat-color-2" style="width: 40%; height: 5px;"></div>
                                 </div>
                             </div>

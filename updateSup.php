@@ -26,6 +26,7 @@
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
@@ -42,8 +43,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/teana.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/title-2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="updateSup.php"><img src="images/teana.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="updateSup.php"><img src="images/title-2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -87,7 +88,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
+                        <a href="php_scripts/logout.php" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
                     </li>
                 </ul>
             </div>
@@ -175,8 +176,13 @@
                                 $name = $row['supplier_name'];
                                 $address = $row['address'];
                                 $contact = $row['contact'];
-                                }
-                                ?>
+                                $first = $row['first_material'];
+                                $second = $row['second_material'];
+                                $third = $row['third_material'];
+                                $fourth = $row['fourth_material'];
+                                $fifth = $row['fifth_material'];
+                                 } 
+                                 ?>
                             <!-- customer id -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Customer ID</label>
                             <input type="text" id="id" name="id" value="<?php echo $id ?>" hidden>
@@ -194,9 +200,21 @@
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Contact Number</label>
                             <input type="number" id="contact" name="contact" class="form-control" placeholder="Enter Contact Number" value="<?php echo $contact ?>">
                             </div>
+                             <!-- Raw Materials -->
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Raw Materials</label>
+                            <input type="text" id="first" name="first" class="form-control" placeholder="Enter Raw Material" value="<?php echo $first ?>" required>
+                            <br>
+                            <input type="text" id="second" name="second" class="form-control" placeholder="Enter Raw Material" value="<?php echo $second ?>">
+                            <br>
+                            <input type="text" id="third" name="third" class="form-control" placeholder="Enter Raw Material" value="<?php echo $third ?>">
+                            <br>
+                            <input type="text" id="fourth" name="fourth" class="form-control" placeholder="Enter Raw Material" value="<?php echo $fourth ?>">
+                            <br>
+                            <input type="text" id="fifth" name="fifth" class="form-control" placeholder="Enter Raw Material" value="<?php echo $fifth ?>">
+                            </div>
                              <div class="form-actions form-group">
                             <button type="submit" name="updateSup" class="btn btn-success btn-lg">Update</button>
-                             <button type="submit" name="delSup" class="btn btn-danger btn-lg">Delete</button>
+                             <button type="submit" class="btn btn-danger btn-lg" onclick="return confirm('This action cannot be redo. Are you sure you want to delete this data?')" name="delSup">Delete</button>
                              </div>
                         </form>
                       </div>

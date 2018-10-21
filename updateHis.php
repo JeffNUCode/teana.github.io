@@ -42,8 +42,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/teana.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/title-2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="updateHis.php"><img src="images/teana.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="updateHis.php"><img src="images/title-2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -86,7 +86,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
+                        <a href="php_scripts/logout.php" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
                     </li>
                 </ul>
             </div>
@@ -157,7 +157,7 @@
                         border-top: 0; }
                         </style>
                       <div class="card-header">
-                        <strong style="color:white;">Update Customer Information</strong>
+                        <strong style="color:white;">Update Order History</strong>
                       </div>
                       <div class="card-body card-block">
                         <form action="" method="post" >
@@ -182,32 +182,48 @@
                                 $quantity = $row['quantity'];
                                 $status = $row['status']; 
                                 $actual = $row['actual_delivery'];
+                                $size = $row['feet_size'];
+                                $remarks = $row['remarks'];
                                 }
                                 ?>
                             <!-- customer id -->
+                            <div class="row">
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Customer ID</label>
                                    <input type="text" id="id" name="id" value="<?php echo $id ?>" hidden>
                             <input type="text" class="form-control" value="<?php echo $id ?>" disabled>
                             </div>
+                            </div>
                             <!-- customer name -->
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Customer Name</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="Enter Customer Name" value="<?php echo $name ?>">
                             </div>
+                            </div>
                             <!-- address -->
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Address</label>
                             <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address" value="<?php echo $address ?>">
                             </div>
+                            </div>
                             <!-- contact number -->
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Contact Number</label>
                             <input type="number" id="contact" name="contact" class="form-control" placeholder="Enter Contact Number" value="<?php echo $contact ?>">
                             </div>
+                            </div>
                             <!-- order date -->
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Order Date</label>
                             <input type="date" id="order" name="order" class="form-control" value="<?php echo $date ?>">
                             </div>
+                            </div>
                             <!-- delivery date -->
+                            <div class="col-6">
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Actual Delivery Date</label>
                             <input type="date" id="actual" name="actual" class="form-control" value="<?php echo $actual ?>">
+                            </div>
+                            </div>
                             </div>
                             <!-- shoes -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Type of Shoes</label>
@@ -240,6 +256,10 @@
                                     <option value="with Design" <?php if($sole=="with Design") echo 'selected="selected"'; ?>>with Design</option>
                                 </select>
                             </div>
+                             <!--feet size -->
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Shoe Size</label>
+                            <input type="number" id="size" name="size" class="form-control" placeholder="Enter Shoe Size" value="<?php echo $size ?>">
+                            </div>
                              <!-- quantity -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Quantity</label>
                             <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Enter Quantity" value="<?php echo $quantity ?>">
@@ -252,12 +272,17 @@
                                     <option value="To be delivered" <?php if($status=="To be delivered") echo 'selected="selected"'; ?>>To be delivered</option>
                                     <option value="Delayed" <?php if($status=="Delayed") echo 'selected="selected"'; ?>>Delayed</option>
                                     <option value="Delivered" <?php if($status=="Delivered") echo 'selected="selected"'; ?>>Delivered</option>
+                                    <option value="Cancelled" <?php if($status=="Cancelled") echo 'selected="selected"'; ?>>Cancelled</option>
                                 </select>
+                            </div>
+                            <!--remarks -->
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Remarks</label>
+                            <textarea rows="9" type="text" class="form-control" id="remarks" name="remarks" value="<?php echo $remarks ?>"><?php echo $remarks ?></textarea>
                             </div>
 
                              <div class="form-actions form-group">
                             <button type="submit" name="updateHis" class="btn btn-success btn-lg">Update</button>
-                             <button type="submit" name="delHis" class="btn btn-danger btn-lg">Delete</button>
+                             <button type="submit"class="btn btn-danger btn-lg" onclick="return confirm('This action cannot be redo. Are you sure you want to delete this data?')" name="delHis">Delete</button>
                              </div>
                         </form>
                       </div>

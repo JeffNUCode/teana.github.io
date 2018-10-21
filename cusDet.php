@@ -42,8 +42,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/teana.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/title-2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="cusDet.php"><img src="images/teana.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="cusDet.php"><img src="images/title-2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -87,7 +87,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
+                        <a href="php_scripts/logout.php" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
                     </li>
                 </ul>
             </div>
@@ -164,7 +164,7 @@
             
           <?php 
           $db = mysqli_connect('localhost', 'root','','teana');
-          $results = mysqli_query($db, "SELECT * FROM customer_order"); 
+          $results = mysqli_query($db, "SELECT * FROM customer_info"); 
           ?>
             <table id="myTable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="bootstrap-data-table_info">
                 <thead>
@@ -184,7 +184,9 @@
             <td><?php echo $row['address']; ?></td>
             <td><?php echo $row['contact']; ?></td>
             <td>
-               <a href="updateCust.php?ID=<?php echo $row['customer_id']; ?>" class="ed_year" style="color:blue" >UPDATE</a> 
+                <button type="submit" class="btn btn-success btn-sm">
+               <a href="updateCust.php?ID=<?php echo $row['customer_id']; ?>" class="ed_year" style="color:white" >UPDATE</a> 
+           </button>
             </td>
             </tr>
              <?php } ?>

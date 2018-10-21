@@ -42,8 +42,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/teana.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/title-2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="addSup.php"><img src="images/teana.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="addSup.php"><img src="images/title-2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -86,7 +86,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
+                        <a href="php_scripts/logout.php" name="logout"> <i class="menu-icon fa fa-sign-out"></i>Log Out</a>
                     </li>
                 </ul>
             </div>
@@ -164,15 +164,27 @@
                             <?php include('php_scripts/errors.php'); ?>
                             <!-- customer name -->
                           <div class="form-group"><label for="nf-picture" class=" form-control-label">Supplier Name</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Supplier Name">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Supplier Name" required>
                             </div>
                             <!-- address -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Address</label>
-                            <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address">
+                            <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address" required>
                             </div>
                             <!-- contact number -->
                             <div class="form-group"><label for="nf-picture" class=" form-control-label">Contact Number</label>
-                            <input type="number" id="contact" name="contact" class="form-control" placeholder="Enter Contact Number">
+                            <input type="number" id="contact" name="contact" class="form-control" placeholder="Enter Contact Number" required>
+                            </div>
+                            <!-- Raw Materials -->
+                            <div class="form-group"><label for="nf-picture" class=" form-control-label">Raw Materials</label>
+                            <input type="text" id="first" name="first" class="form-control" placeholder="Enter Raw Material" required>
+                            <br>
+                            <input type="text" id="second" name="second" class="form-control" placeholder="Enter Raw Material">
+                            <br>
+                            <input type="text" id="third" name="third" class="form-control" placeholder="Enter Raw Material">
+                            <br>
+                            <input type="text" id="fourth" name="fourth" class="form-control" placeholder="Enter Raw Material">
+                            <br>
+                            <input type="text" id="fifth" name="fifth" class="form-control" placeholder="Enter Raw Material">
                             </div>
                              <div class="form-actions form-group">
                             <button type="submit" name="addSup" class="btn btn-success btn-lg">Submit</button>
